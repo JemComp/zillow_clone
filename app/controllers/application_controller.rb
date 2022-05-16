@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
 
     def require_logged_in
         unless logged_in?
-            render json: ["Unauthorized User"], status 403
+            render json: ["Unauthorized User"], status: 403
         end
     end
 
     def require_logged_out 
         if logged_in?
-            render json: [""], status 422
+            render json: [""], status: 422
         end
     end
 
