@@ -1,0 +1,63 @@
+
+
+
+
+  .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      height: 80px;
+      /* background-color: red;; */
+  }
+
+  .nav-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    p {
+        margin: 20px;
+        cursor: pointer;
+        user-select: none;
+    }
+  }
+
+  .header img {
+    height: 80px;
+  }
+
+  .nav-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+
+
+  .session-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    /* background-color: yellow; */
+  }
+
+  .session-form{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 90%;
+    height: 90%;
+
+  }
+
+  #session-welcome {
+    font-size:large;
+  }
