@@ -2,7 +2,8 @@
   
 import React from "react";
 import { Link } from "react-router-dom";
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { login } from "../../util/session_api_util";
+//refactor to pass in open/close modal
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -12,15 +13,30 @@ class SessionForm extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this)
+        console.log(props)
     }
+
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
+    demoLogin() {
+        const demoUser = {
+            email: 'demo@login.com',
+            password: '123456'
+        }
+        this.props.login(demoUser)
+            .then(() => this.props.closeModal())
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
-        if (this.props.errors.length === 0) {
-            dispatch(closeModal()) 
-        }
+        this.props.processForm(user)
+            .then(() => this.props.closeModal())
+        
     }
 
     handleChange(type) {
@@ -30,6 +46,7 @@ class SessionForm extends React.Component {
             });
         }
     }
+
     
     render() {
         // if(this.props.currentUser) {
@@ -38,26 +55,27 @@ class SessionForm extends React.Component {
         // }
         return (
             <div className="session-form-container">
+                <h1 id="session-welcome">Welcome to Spillow</h1>
                 <h2>{this.props.formType === "login" ? "Log in" : "Sign up"}</h2>
 
 
 
                 <form onSubmit={this.handleSubmit} className="session-form">
-                    <label>Email:
-                        <input type="text" value={this.state.email} onChange={this.handleChange("email")}/>
-                    </label>
+
+                    <div id="session-input">
+                        <label>Email </label>
+                        <br/>
+                        <input type="text" placeholder="Enter email" value={this.state.email} onChange={this.handleChange("email")}/>
+                    </div>
 
                     <br/>
-                    
-                    <label>Password:
-                        <input type="password" value={this.state.password} onChange={this.handleChange("password")} />
-                    </label>
+                    <div id="session-input">
+                        <label>Password </label>
+                        <br/>
+                        <input type="password" placeholder="Enter password" value={this.state.password} onChange={this.handleChange("password")} />
+                    </div>
 
                     <br/>
-
-                    <button>{this.props.formType === "login" ? "Log in!" : "Sign up!"}</button>
-                
-                </form>
                 <ul>
                     {this.props.errors.map((error, index) => {
                         return <li key={index}>{error}</li>
@@ -65,13 +83,15 @@ class SessionForm extends React.Component {
                     <br/>
                 </ul>
 
-                <button >
+                    <button id="session-submit">{this.props.formType === "login" ? "Log in" : "Submit"}</button>
+                
+                </form>
+
+                <button onClick={this.demoLogin} id="switch-login">
                 {"Log in demo user"}
                 </button>
 
-                <button onClick={() => dispatch(openModal(this.props.formType === "login" ? "signup" : "login"))}>
-                {this.props.formType === "login" ? "Sign up instead" : "Log In instead"}
-                </button>
+                {this.props.otherForm}
             </div>
         );  
     }

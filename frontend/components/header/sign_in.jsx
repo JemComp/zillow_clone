@@ -18,21 +18,22 @@ class SignIn extends React.Component {
         return (
             <div>
                 <p>Hello { this.props.currentUser.email }</p>
-                <button onClick={this.handleLogout}>Logout</button>
+                <p onClick={this.handleLogout}>Logout</p>
             </div>
     )}
 
     loggedOut() {
         return (
             <div>
-                <button onClick={() => dispatch(openModal('signup'))}>
+                <p onClick={() => dispatch(openModal('signup'))}>
                 Sign up
-                </button>
+                </p>
             </div>
     )}
 
 
     render() {
+
         return this.props.currentUser ? this.loggedIn() : this.loggedOut();
     }
 }

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { signup } from "../../actions/session_actions";
+import { login, signup, clearErrors } from "../../actions/session_actions";
 import SessionForm from "./session_form";
 import React from "react";
 import { openModal, closeModal } from '../../actions/modal_actions';
@@ -16,13 +16,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        login: (user) => dispatch(login(user)),
         processForm: (user) => dispatch(signup(user)),
         otherForm: (
             <button onClick={() => dispatch(openModal('login'))}>
-              Login
+              Login Instead
             </button>
           ),
-          closeModal: () => dispatch(closeModal())
+          openModal: (modalType) => dispatch(openModal(modalType)),
+          closeModal: () => dispatch(closeModal()),
+          clearErrors: () => dispatch(clearErrors())
     };
 }
 
