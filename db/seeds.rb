@@ -152,6 +152,58 @@ listing10 = Listing.create(
     description: "Welcome to your very own 2bed, 1.5 bath home located in the friendly Wrigley neighborhood of Long Beach."
 )
 
+listing11 = Listing.create(
+    address: "7868 Electra Dr",
+    zip_code: 90046,
+    city: "Los Angeles",
+    state: "CA",
+    lat: 34.10704793228383, lng: -118.36421374594264,
+    beds: 4,
+    baths: 4,
+    sqft: 4173,
+    price: 4999999,
+    description: "Magnificent recently remodeled modern home situated in the exclusive Hollywood Hills community of Mount Olympus defines the ultimate entertainer's lifestyle. "
+)
+
+listing12 = Listing.create(
+    address: "26103 Emerald Ct",
+    zip_code: 91381,
+    city: "Valencia",
+    state: "CA",
+    lat: 34.4066369277601, lng: -118.59248064593658
+    beds: 6,
+    baths: 5,
+    sqft: 43866,
+    price: 1850000,
+    description: "Phenomenal FORMER MODEL Home sits in a quiet Cul-De-Sac serenely, nestled inside scenic Westridge area."
+)
+
+listing13 = Listing.create(
+    address: "9442 Cross Fox Way",
+    zip_code: 95758,
+    city: "Elk Grove",
+    state: "CA",
+    lat: 38.41483754618444, lng: -121.39419160365746,
+    beds: 3,
+    baths: 3,
+    sqft: 1385,
+    price: 1850000,
+    description: "Welcome to this 2 story 3 bedroom, 2.5 bathroom home for sale in Elk Grove. "
+)
+
+listing14 = Listing.create(
+    address: "12659 Casa bonita PI",
+    zip_code: 92392,
+    city: "Victorville",
+    state: "CA",
+    lat: 34.492739735470785, lng: -117.38731608839113,
+    beds: 5,
+    baths: 4,
+    sqft: 3256,
+    price: 499900,
+    description: "Beautiful 5 bedroom, 3.5 bathroom, 2 story home with lots of natural light in the community of Victorville!"
+)
+
 
 
 
