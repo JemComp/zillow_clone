@@ -6,6 +6,12 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
+    has_many :listings,
+    primary_key: :id,
+    foreign_key: :owner_id,
+    class_name: :Listing
+
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user
