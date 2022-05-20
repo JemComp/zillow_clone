@@ -11,20 +11,26 @@ class MarkerManager {
         listings.forEach(listing => listingsObj[listing.id] = listing);
     
     listings
-      .forEach(newlisting => this.createMarkerFromlisting(newlisting, this.handleClick))
+        // .filter(listing => !this.markers[listing.id])
+        .forEach(newlisting => this.createMarkerFromlisting(newlisting, this.handleClick))
 
-    Object.keys(this.markers)
-      .forEach((listingId) => this.removeMarker(this.markers[listingId]))
+    // Object.keys(this.markers)
+    //     .filter(listingId => !listingsObj[listingId])
+    //   .forEach((listingId) => this.removeMarker(this.markers[listingId]))
+      console.log(this.markers)
     }
 
     createMarkerFromlisting(listing) {
-        console.log(listing.lat, listing.lng)
         const pos = new google.maps.LatLng(listing.lat, listing.lng)
         const marker = new google.maps.Marker({
-            pos,
+            position: pos,
             map: this.map,
-            listingId: listing.id
+            listingId: listing.id,
+            icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
         });
+
+        marker.addListener('click', () => this.handleClick(listing));
+        this.markers[marker.listingId] = marker;
 
     }
 
