@@ -27,7 +27,6 @@ class ListingMap extends React.Component {
   
     render() {
       return (
-        // ...
         <div ref={ map => this.mapNode = map } className="listings-index-map" > 
         </div>
       )
