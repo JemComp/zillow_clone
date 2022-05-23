@@ -20,8 +20,8 @@ class Search extends React.Component {
                 </div>
                 
                 <section className="listings-index-container">
-                    <ListingMap listings={this.props.listings}/>
-                    <ListingsIndex fetchAllListings={this.props.fetchAllListings} listings={this.props.listings}/>
+                    <ListingMap listings={this.props.listings} openListingModal={this.props.openListingModal}/>
+                    <ListingsIndex fetchAllListings={this.props.fetchAllListings} listings={this.props.listings} openListingModal={this.props.openListingModal}/>
 
                 </section>
             </div>

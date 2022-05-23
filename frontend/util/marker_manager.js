@@ -59,7 +59,7 @@ class MarkerManager {
 
         marker.addListener("mouseover", mouseOver);
         marker.addListener("mouseout", mouseOut);
-        marker.addListener('click', () => this.handleClick(listing));
+        marker.addListener('click', () => this.handleClick(listing.id));
         this.markers[marker.listingId] = marker;
 
 

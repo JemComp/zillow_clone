@@ -16,7 +16,7 @@ class ListingMap extends React.Component {
   
       // wrap this.mapNode in a Google Map
       this.map = new google.maps.Map(this.mapNode, mapOptions);
-      this.MarkerManager = new MarkerManager(this.map)
+      this.MarkerManager = new MarkerManager(this.map, this.props.openListingModal)
       this.MarkerManager.updateMarkers(Object.values(this.props.listings))
 
     }

@@ -9,7 +9,7 @@ class ListingIndexItem extends React.Component{
   render(){
     return(
       <div className="listing-index-item">
-        <Link to={`/listings/${this.props.listing.id}`}>
+        <div onClick={() => this.props.openListingModal(this.props.listing.id)}>
 
           <img className="index-listing-photos" 
           src={this.props.listing.photoUrls[0]} 
@@ -20,7 +20,7 @@ class ListingIndexItem extends React.Component{
             <p id="index-item-address">{this.props.listing.address}</p>
           </div>
 
-        </Link>
+        </div>
       </div>
     )
   }

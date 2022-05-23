@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { openModal, closeModal } from '../../actions/modal_actions';
+// import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 class SignIn extends React.Component {
@@ -23,10 +23,11 @@ class SignIn extends React.Component {
     )}
 
     loggedOut() {
+        console.log(this.props)
         return (
             <div>
-                <p onClick={() => dispatch(openModal('signup'))}>
-                Sign up
+                <p onClick={() => this.props.openModal('login')}>
+                Sign In
                 </p>
             </div>
     )}

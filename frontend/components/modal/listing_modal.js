@@ -3,17 +3,17 @@ import { closeModal } from '../../actions/listing_modal_actions';
 import { connect } from 'react-redux';
 import ListingShow from '../listings/listing_show';
 
-function Modal({listingId, closeModal}) {
-  if (!listingId) {
+function ListingModal({listing, closeModal}) {
+  if (!listing) {
     return null;
   }
   
   let component;
-  component = (listingId ? <ListingShow key={listingId}/> : null);
+  component = (listing ? <ListingShow listing={listing}/> : null);
   return (
     <div className="listing-modal-background" onClick={closeModal}>
       <div className="listing-modal-child" onClick={e => e.stopPropagation()}>
-        { component }modal
+        { component }
       </div>
     </div>
   );
@@ -21,8 +21,8 @@ function Modal({listingId, closeModal}) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.listingId
-  };
+    listing: state.entities.listings[state.ui.listingModal]
+  }; 
 };
 
 const mapDispatchToProps = dispatch => {
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(ListingModal);

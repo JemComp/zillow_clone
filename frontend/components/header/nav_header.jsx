@@ -13,7 +13,7 @@ class NavHeader extends React.Component {
             <div className="nav-header">
                 <NavLeft/>
                 <Link to="/"><img src = { window.houseIcon }/></Link>
-                <SignIn logout={this.props.logout} currentUser={this.props.currentUser}/>
+                <SignIn logout={this.props.logout} currentUser={this.props.currentUser} openModal={this.props.openModal}/>
             </div>
         )
     }

@@ -20,7 +20,7 @@ class ListingsIndex extends React.Component{
                 <br/>
                 <div className="listings-index-right-container">
                     {Object.values(this.props.listings).map((listing) => (
-                    <ListingIndexItem key={listing.id} listing={listing}/>))}
+                    <ListingIndexItem key={listing.id} listing={listing} openListingModal={this.props.openListingModal}/>))}
                 </div>
             </div>
         )
