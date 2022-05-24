@@ -13,12 +13,12 @@ class MarkerManager {
         listings.forEach(listing => listingsObj[listing.id] = listing);
     
     listings
-        // .filter(listing => !this.markers[listing.id])
+        .filter(listing => !this.markers[listing.id])
         .forEach(newlisting => this.createMarkerFromlisting(newlisting, this.handleClick))
 
-    // Object.keys(this.markers)
-    //     .filter(listingId => !listingsObj[listingId])
-    //   .forEach((listingId) => this.removeMarker(this.markers[listingId]))
+    Object.keys(this.markers)
+        .filter(listingId => !listingsObj[listingId])
+      .forEach((listingId) => this.removeMarker(this.markers[listingId]))
       console.log(this.markers)
     }
 

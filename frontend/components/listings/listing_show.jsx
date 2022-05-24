@@ -24,28 +24,13 @@ class ListingShow extends React.Component {
         const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description  } = this.props.listing
         console.log("render-props", this.props)
         
-        // let lastPhotoBlur;
-        // let blurContainer;
-        // if (photoUrls.length % 2 === 0) {
-        //     lastPhotoBlur = 'last-photo-blur-even';
-        //     blurContainer = 'blur-container-even'
-        // } else {
-        //     lastPhotoBlur = 'last-photo-blur-odd';
-        //     blurContainer = 'blur-container-odd'
-        // }
 
         return(
             <div className="listing-div">
                 <div className="listing-div-left">
                     {photoUrls.map((photoUrl, i) =>(
                         <img key={i} id={`listing-photo-${i}`} className="listing-photos" src={photoUrl} alt="listing-photo"></img>
-                        ))}
-                        {/* <div className={blurContainer}> */}
-                            {/* <img key={photoUrls.length} className={lastPhotoBlur} src={photoUrls[0]} alt="listing-photo"></img> */}
-                            {/* <div className="blur-img-text" onClick={console.log('favorite')}>Click to Favorite</div> */}
-                            {/* <button className="tour-button">Request a tour</button>   */}
-                            {/* maybe have button show email and say 'email owner to request tour ??' */}
-                        {/* </div> */}  
+                        ))} 
                         
                         
                 </div>

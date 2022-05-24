@@ -11,7 +11,7 @@ class NavHeader extends React.Component {
     render() {
         return (
             <div className="nav-header">
-                <NavLeft/>
+                <NavLeft currentUser={this.props.currentUser} openModal={this.props.openModal}/>
                 <Link to="/"><img src = { window.houseIcon }/></Link>
                 <SignIn logout={this.props.logout} currentUser={this.props.currentUser} openModal={this.props.openModal}/>
             </div>
