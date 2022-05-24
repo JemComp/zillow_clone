@@ -82,3 +82,101 @@
         padding-right:15px
     }
 }
+
+
+.listing-div{
+    display: flex;
+    height: 100vh;
+    background-color: white;
+}
+
+.listing-price{
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.listing-physical-info{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.listing-info{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.listing-address {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.listing-physical-div{
+    margin-bottom: 8px;
+}
+
+.listing-address-div{
+    margin-bottom: 8px;
+    h3 {
+        font-weight: bolder;
+        font-size: larger;
+    }
+    border: 3px solid blue;
+    font-size: large;
+}
+
+.listing-price-div{
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.listing-photos{
+    width: 50%;
+    height: 25%;
+    object-fit: cover;
+    border-top: 2px solid white;
+    border-right: 5px solid white;
+    box-sizing: border-box;
+}
+
+#listing-photo-0{
+    width: 100%;
+    height: 50%;
+}
+
+.listing-div-left{
+    width: 75%;
+    overflow-y: scroll;
+}
+
+.listing-div-right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: ;
+}
+
+.listing-nav-header{
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    // margin-top: 2px;
+    border-bottom: .5px solid grey;
+}
+
+// .listings-mini-map{
+//     overflow-y: scroll;
+//     width: 100%;
+//     height: 50%;
+// }
+
+#listing-map-container{
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 2/ 1;
+    border-radius: 8px;
+    border: 10px;
+    padding: 10px;
+    border: 3px solid red;
+}
