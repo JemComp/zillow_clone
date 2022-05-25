@@ -10,16 +10,22 @@ export const fetchListing = listingId => $.ajax({
     method: "GET"
 });
 
-export const createListing = listing => $.ajax({
+export const createListing = FormData => $.ajax({
     url: `/api/listings`,
     method: `POST`,
-    data: { listing }
+    data: FormData,
+    // data: { listing },
+    processData: false,
+    contentType: false,
 });
 
-export const updateListing = listing => $.ajax({
-    url: `/api/listings/${listing.id}`,
+export const updateListing = FormData => $.ajax({
+    url: `/api/listings/${FormData.get("id")}`,
     method: `PATCH`,
-    data: { listing }
+    data: FormData,
+    // data: { listing },
+    processData: false,
+    contentType: false,
 });
 
 export const deleteListing = listingId => $.ajax({

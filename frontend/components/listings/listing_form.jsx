@@ -5,7 +5,9 @@ class ListingForm extends React.Component {
         super(props)
         this.state = this.props.listing;
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleFile = this.handleFile.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+        this.fileInput = React.createRef();
+
     }
 
     componentDidMount() {
@@ -15,7 +17,16 @@ class ListingForm extends React.Component {
           };
       
           // wrap this.mapNode in a Google Map
-          this.map = new google.maps.Map(this.mapNode, mapOptions);
+        this.map = new google.maps.Map(this.mapNode, mapOptions);
+        this.setState( { photoFiles: [] } )
+        // console.log(this.state)
+
+    }
+
+    handleFile(e) {
+        console.log(e.target.files)
+        this.setState({ photoFiles: [...this.state.photoFiles, e.target.files[0]] }, console.log(this.state))
+        // console.log(this.state)
     }
 
 
@@ -23,18 +34,42 @@ class ListingForm extends React.Component {
         return e => {
             this.setState({ [field]: e.currentTarget.value})    
         }
+        
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state);
-      }
+        console.log(this.state)
+        const formData = new FormData();
+        formData.append('id', this.state.id)
+        formData.append('listing[address]', this.state.address);
+        formData.append('listing[zip_code]', this.state.zip_code);
+        formData.append('listing[city]', this.state.city);
+        formData.append('listing[state]', this.state.state);
+        formData.append('listing[lat]', this.state.lat);
+        formData.append('listing[lng]', this.state.lng);
+        formData.append('listing[beds]', this.state.beds);
+        formData.append('listing[baths]', this.state.baths);
+        formData.append('listing[sqft]', this.state.sqft);
+        formData.append('listing[price]', this.state.price);
+        formData.append('listing[description]', this.state.description);
+        if (this.state.photoFiles) {
+            console.log("photos in state")
+            for (let i = 0; i < this.state.photoFiles.length; i++) {
+                formData.append("listing[photosUrl][]", this.state.photoFiles[i]);
+            }
+        }
+        // console.log(formData.get("id"))
+        this.props.action(formData)
+    }
+
+
 
     render() {
         return (
             <div className="listing-form">
         <h3>{this.props.formType}</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} >
           <label>
             Address
             <input
@@ -138,7 +173,9 @@ class ListingForm extends React.Component {
             />
           </label>
 
-          <button type='submit' value={this.props.formType}>submit</button>
+
+
+          <button type='submit' value={this.props.formType}>{this.props.formType}</button>
         </form>
 
         <ul>
@@ -150,9 +187,15 @@ class ListingForm extends React.Component {
                     <br/>
         </ul>
 
+        <div className="listing-form-photos">
+            <label id="form-photos-box" >
+                photos:<input type='file' multiple onChange={this.handleFile} />
+            </label>            
+       </div>
+
+
       </div>
-        )
-    }
+    )}
 
 }
 

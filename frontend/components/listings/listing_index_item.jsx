@@ -12,7 +12,7 @@ class ListingIndexItem extends React.Component{
         <div onClick={() => this.props.openListingModal(this.props.listing.id)}>
 
           <img className="index-listing-photos" 
-          src={this.props.listing.photoUrls[0]} 
+          src={this.props.listing.photoUrls[0]? this.props.listing.photoUrls[0] : null} 
           alt="listing main photo"></img>
 
           <div>
