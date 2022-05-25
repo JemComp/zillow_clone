@@ -194,3 +194,31 @@
     border: 3px solid black;
     // outline: solid;
 }
+
+
+.listing-form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.listing-form-photos{
+    width: 60%;
+    overflow-y: scroll;
+}
+
+.listing-form-right{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: ;
+}
+
+.form-photos{
+    width: 50%;
+    aspect-ratio: 2/1;
+    
+    object-fit: cover;
+    border-top: 2px solid white;
+    border-right: 5px solid white;
+    box-sizing: border-box;
+}
