@@ -19,7 +19,9 @@ class UpdateListingForm extends React.Component {
           action={action}
           formType={formType}
           listing={listing} 
-          errors={errors} />
+          errors={errors}
+          history={this.props.history}
+           />
       );
     }
   }
@@ -36,4 +38,4 @@ class UpdateListingForm extends React.Component {
     action: listing => dispatch(updateListing(listing))
   });
   
-  export default connect(mapStateToProps, mapDispatchToProps)(UpdateListingForm);
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UpdateListingForm));

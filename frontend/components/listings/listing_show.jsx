@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import MarkerManager from '../../util/marker_manager'
 
 class ListingShow extends React.Component {
     constructor(props) {
@@ -6,23 +8,27 @@ class ListingShow extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props)
         const mapOptions = {
-            center: { lat: 37.66385274501688, lng: -122.4351120016871}, // this is SF
-            zoom: 13
+            center: { lat: this.props.listing.lat, lng: this.props.listing.lng},
+            zoom: 16
           };
       
           // wrap this.mapNode in a Google Map
           this.map = new google.maps.Map(this.mapNode, mapOptions);
-        //   this.MarkerManager = new MarkerManager(this.map, this.props.openListingModal)
-        //   this.MarkerManager.updateMarkers(Object.values(this.props.listings))
+          this.MarkerManager = new MarkerManager(this.map, this.props.openListingModal)
+          this.MarkerManager.updateMarkers([this.props.listing])
     }
+
+
 
     render(){
 
         if (!this.props.listing) return null;
-        const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description  } = this.props.listing
+        const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description, user_id  } = this.props.listing
         console.log("render-props", this.props)
+
+
         
 
         return(
@@ -30,10 +36,10 @@ class ListingShow extends React.Component {
                 <div className="listing-div-left">
                     {photoUrls.map((photoUrl, i) =>(
                         <img key={i} id={`listing-photo-${i}`} className="listing-photos" src={photoUrl} alt="listing-photo"></img>
-                        ))} 
-                        
+                        ))}         
                         
                 </div>
+
                 <div className="listing-div-right">
                     <nav className="listing-nav-header">
                     </nav>
@@ -66,6 +72,13 @@ class ListingShow extends React.Component {
                         <span className="listing-address">{description}</span>
                     </div>
 
+                    <div>
+                        {(this.props.currentUser && this.props.currentUser.id === user_id) ? 
+                        <div className="show-edit-link-container">
+                            <Link className='show-edit-link' onClick={this.props.closeModal} to={`/listings/${this.props.listing.id}/edit`}>Edit your listing</Link>
+                        </div> : 
+                        null}
+                    </div>
 
                 </div>
             </div>
@@ -75,4 +88,3 @@ class ListingShow extends React.Component {
 
 
 export default ListingShow
-

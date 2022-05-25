@@ -6,15 +6,15 @@ import { createListing } from '../../actions/listing_actions';
 const mapStateToProps = state => ({
   listing: {
     address: '',
-    zip_code: '',
+    zip_code: 0,
     city: '',
     state: '',
-    lat: '',
-    lng: '',
-    beds: '',
-    baths: '',
-    sqft: '',
-    price: '',
+    lat: 37.7749,
+    lng: -122.4194,
+    beds: 0,
+    baths: 0,
+    sqft: 0,
+    price: 0,
     desciption: ''
   },
   formType: 'Create Listing',
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   action: listing => dispatch(createListing(listing))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListingForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListingForm));

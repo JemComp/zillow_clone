@@ -9,7 +9,7 @@ function ListingModal({listing, closeModal}) {
   }
   
   let component;
-  component = (listing ? <ListingShow listing={listing}/> : null);
+  component = (listing ? <ListingShow listing={listing} currentUser={currentUser} closeModal={closeModal}/> : null);
   return (
     <div className="listing-modal-background" onClick={closeModal}>
       <div className="listing-modal-child" onClick={e => e.stopPropagation()}>
@@ -21,7 +21,8 @@ function ListingModal({listing, closeModal}) {
 
 const mapStateToProps = state => {
   return {
-    listing: state.entities.listings[state.ui.listingModal]
+    listing: state.entities.listings[state.ui.listingModal],
+    currentUser: state.entities.users[state.session]
   }; 
 };
 

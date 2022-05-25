@@ -2,10 +2,11 @@ import React from "react";
 
 
 class MarkerManager {
-    constructor(map, handleClick) {
+    constructor(map, handleClick, draggable) {
         this.map = map;
         this.markers = {};
         this.handleClick = handleClick;
+        this.draggable  = (draggable) ? draggable : false;
     }
 
     updateMarkers(listings) {
@@ -26,7 +27,7 @@ class MarkerManager {
         const pos = new google.maps.LatLng(listing.lat, listing.lng)
         const contentListingInfo = 
         `<div className="content-listing-info">
-                <img src=${listing.photoUrls[0]} style='width:70px; hieght: 70px; pading-right: 15px;'/>
+                <img src=${(listing.photoUrls) ? listing.photoUrls[0] : null} style='width:70px; hieght: 70px; pading-right: 15px;'/>
                 <div className="info-window">
                     <h3> $${listing.price.toLocaleString(undefined, { minimumFractionDigits: 0 })}</h3>
                     <h2> ${listing.beds} bd ${listing.baths} ba  ${listing.sqft} sqft</h2>
@@ -54,15 +55,21 @@ class MarkerManager {
             infoWindow: listingInfoWindow,
             map: this.map,
             listingId: listing.id,
-            icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+            icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png", 
+            draggable: this.draggable
         });
 
         marker.addListener("mouseover", mouseOver);
         marker.addListener("mouseout", mouseOut);
-        marker.addListener('click', () => this.handleClick(listing.id));
+        marker.addListener('click', () => this.handleClick(listing.id));4
         this.markers[marker.listingId] = marker;
 
 
+    }
+
+    getPos(listingId) {
+        console.log(this.markers[listingId].getPosition())
+        return this.markers[listingId].getPosition()
     }
 
     removeMarker(marker) {
