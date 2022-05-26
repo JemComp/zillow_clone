@@ -7,7 +7,7 @@ end
 json.saves do
     user.saves.each do |save|
         json.set! save.id do 
-            json.extract! save, :user_id, :listing_id
+            json.extract! save, :id, :user_id, :listing_id
         end 
     end
 end

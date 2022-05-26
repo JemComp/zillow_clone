@@ -29,7 +29,7 @@ export const createSave = (save) => dispatch => {
 export const deleteSave = (saveId) => {
   return (dispatch) => {
     return SaveApiUtil.deleteSave(saveId).then(
-      (saveId) => dispatch(removeSave(saveId)),
+      (save) => dispatch(removeSave(save.id)),
     );
   };
 };

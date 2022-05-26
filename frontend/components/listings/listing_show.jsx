@@ -21,7 +21,10 @@ class ListingShow extends React.Component {
     }
 
     isSaved() {
+        //REFACTOR THIS 
         let saveId = Object.keys(this.props.saves).find(key => this.props.saves[key].listing_id === this.props.listing.id)
+
+
         saveId = saveId ? saveId : -1
         console.log("isSaved", this.props, saveId)
 
