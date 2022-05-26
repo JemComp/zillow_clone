@@ -5,10 +5,10 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER"
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
 export const CLEAR_ERRORS = "CLEAR_ERRORS"
 
-const receiveCurrentUser = (user) => {
+const receiveCurrentUser = (payload) => {
     return {
         type: RECEIVE_CURRENT_USER,
-        user
+        payload
     }
 }
 
@@ -32,7 +32,7 @@ export const clearErrors = () => ({
 
 export const login = user => dispatch => {
     return SessionApiUtil.login(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
+        .then(payload => dispatch(receiveCurrentUser(payload)))
         .fail(error => dispatch(receiveErrors(error)));
 }
 
@@ -45,7 +45,7 @@ export const logout = () => dispatch => {
 export const signup = user => dispatch => {
     // console.log(user)
     return SessionApiUtil.signup(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
+        .then(payload => dispatch(receiveCurrentUser(payload)))
         .fail(error => dispatch(receiveErrors(error)));
 }
 

@@ -1,4 +1,4 @@
-import {RECEIVE_LISTING_ERRORS, CLEAR_ERRORS } from "../actions/listing_actions.js";
+import {RECEIVE_LISTING_ERRORS} from "../actions/listing_actions.js";
 
 const ListingErrorsReducer = (state=[], action) => {
 
@@ -6,10 +6,7 @@ const ListingErrorsReducer = (state=[], action) => {
 
     switch (action.type) {
         case RECEIVE_LISTING_ERRORS:
-            return [...action.errors.responseJSON];
-        case CLEAR_ERRORS:
-            return [];
-        
+            return [...action.errors.responseJSON];     
         default:
             return state;
     }

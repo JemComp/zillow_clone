@@ -67,14 +67,11 @@ class MarkerManager {
 
     }
 
-    getPos(listingId) {
-        console.log(this.markers[listingId].getPosition())
-        return this.markers[listingId].getPosition()
-    }
-
-    removeMarker(marker) {
-        this.markers[marker.listingId].setMap(null);
-        delete this.markers[marker.listingId];
+    createMarkerFromCoords(lat, lng) {
+        return new google.maps.Marker({
+            position: google.maps.LatLng(lat, lng)
+            
+        })
     }
 
     

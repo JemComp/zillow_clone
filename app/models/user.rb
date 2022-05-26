@@ -7,9 +7,21 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     has_many :listings,
-    primary_key: :id,
-    foreign_key: :owner_id,
-    class_name: :Listing
+        primary_key: :id,
+        foreign_key: :owner_id,
+        class_name: :Listing
+
+
+    has_many :saves,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Save
+
+    has_many :saved_listings,
+        through: :saves,
+        source: :listing
+    
+    
 
 
     def self.find_by_credentials(email, password)

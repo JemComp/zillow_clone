@@ -9,4 +9,10 @@ class Listing < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
+    has_many :saves,
+    primary_key: :id,
+    foreign_key: :listing_id,
+    class_name: :Save
+
+
 end

@@ -20,6 +20,28 @@ class ListingShow extends React.Component {
           this.MarkerManager.updateMarkers([this.props.listing])
     }
 
+    isSaved() {
+        let saved = Object.keys(this.props.saves).find(key => this.props.saves[key].listing_id === this.props.listing.id)
+        saved = saved ? saved : -1
+        console.log(saved)
+
+        if (saved === -1) {
+            return (
+                <div>
+                    <button onClick={() => this.props.createSave({user_id: this.props.currentUser.id, listing_id: this.props.listing.id})}> save </button>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <button onClick={() => this.props.deleteSave(saved)}> unsave </button>
+                </div>
+            )
+        }
+
+    }
+
+    
 
 
     render(){
@@ -27,8 +49,8 @@ class ListingShow extends React.Component {
         if (!this.props.listing) return null;
         const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description, user_id  } = this.props.listing
         console.log("render-props", this.props)
-
-
+        console.log("saves", this.props.saves)
+        console.log(this.isSaved())
         
 
         return(
@@ -42,6 +64,7 @@ class ListingShow extends React.Component {
 
                 <div className="listing-div-right">
                     <nav className="listing-nav-header">
+                        {this.isSaved()}
                     </nav>
                     <div className="listing-physical-div">
                         <div className="listing-price-div">
