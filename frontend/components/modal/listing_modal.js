@@ -30,7 +30,7 @@ function ListingModal({currentUser, listing, closeModal, createSave, deleteSave,
 const mapStateToProps = (state, ownProps) => {
   return {
     listing: state.entities.listings[state.ui.listingModal],
-    currentUser: (state.session) ? state.entities.users[state.session] : null,
+    currentUser: state.entities.users[state.session.id],
     saves: state.entities.saves
 
   }; 

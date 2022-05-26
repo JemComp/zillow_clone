@@ -21,20 +21,26 @@ class ListingShow extends React.Component {
     }
 
     isSaved() {
-        let saved = Object.keys(this.props.saves).find(key => this.props.saves[key].listing_id === this.props.listing.id)
-        saved = saved ? saved : -1
-        console.log(saved)
+        let saveId = Object.keys(this.props.saves).find(key => this.props.saves[key].listing_id === this.props.listing.id)
+        saveId = saveId ? saveId : -1
+        console.log("isSaved", this.props, saveId)
 
-        if (saved === -1) {
+        if (this.props.currentUser && saveId === -1) {
             return (
-                <div>
+                <div className="save-container">
                     <button onClick={() => this.props.createSave({user_id: this.props.currentUser.id, listing_id: this.props.listing.id})}> save </button>
+                </div>
+            )
+        } else if (this.props.currentUser && saveId != -1) {
+            return (
+                <div className="save-container">
+                    <button onClick={() => this.props.deleteSave(saveId)}> unsave </button>
                 </div>
             )
         } else {
             return (
-                <div>
-                    <button onClick={() => this.props.deleteSave(saved)}> unsave </button>
+                <div className="save-container">
+
                 </div>
             )
         }
@@ -49,8 +55,8 @@ class ListingShow extends React.Component {
         if (!this.props.listing) return null;
         const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description, user_id  } = this.props.listing
         console.log("render-props", this.props)
-        console.log("saves", this.props.saves)
-        console.log(this.isSaved())
+        // console.log("saves", this.props.saves)
+        // console.log(this.isSaved())
         
 
         return(
