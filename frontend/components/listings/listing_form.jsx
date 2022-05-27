@@ -139,91 +139,100 @@ class ListingForm extends React.Component {
                     <h3>{this.propsformType}</h3>
 
                     <form onSubmit={this.handleSubmit} className="listing-form">
-                        <label>
-                            Address
-                            <input
-                            type='text'
-                            value={this.state.address}
-                            onChange={this.update('address')}
-                            />
-                        </label>
 
-                        <label>
-                            zip code
-                            <input
-                            type='number'
-                            value={this.state.zip_code}
-                            onChange={this.update('zip_code')}
-                            />
-                        </label>
+                            <label className="street-input">
+                                Address
+                                <input
+                                type='text'
+                                value={this.state.address}
+                                onChange={this.update('address')}
+                                />
+                            </label>
 
-                        <label>
-                            city
-                            <input
-                            type='text'
-                            value={this.state.city}
-                            onChange={this.update('city')}
-                            />
-                        </label>
-                        
-                        <label>
-                            State
-                            <input
-                            type='text'
-                            value={this.state.state}
-                            onChange={this.update('state')}
-                            />
-                        </label>
+                        <div className="address-input">
+
+                            <label>
+                                zip code
+                                <input
+                                type='number'
+                                value={this.state.zip_code}
+                                onChange={this.update('zip_code')}
+                                />
+                            </label>
+
+                            <label>
+                                city
+                                <input
+                                type='text'
+                                value={this.state.city}
+                                onChange={this.update('city')}
+                                />
+                            </label>
+                            
+                            <label>
+                                State
+                                <input
+                                type='text'
+                                value={this.state.state}
+                                onChange={this.update('state')}
+                                />
+                            </label>
+                        </div>
 
                         <div className="create-listings-map">
                                 <div ref={ map => this.mapNode = map } id='listing-map-container'>
                                     </div>
-                            </div>
+                        </div>
+                        
+                        <div className=" lat-lng">
+                            <label>
+                                lat
+                                <input
+                                type='number'
+                                value={this.state.lat}
+                                onChange={this.update('lat')}
+                                />
+                            </label>
 
-                        <label>
-                            lat
-                            <input
-                            type='number'
-                            value={this.state.lat}
-                            onChange={this.update('lat')}
-                            />
-                        </label>
+                            <label>
+                                lng
+                                <input
+                                type='number'
+                                value={this.state.lng}
+                                onChange={this.update('lng')}
+                                />
+                            </label>
+                        </div>
+                        
 
-                        <label>
-                            lng
-                            <input
-                            type='number'
-                            value={this.state.lng}
-                            onChange={this.update('lng')}
-                            />
-                        </label>
+                        <div className="extra-inputs">
+                            <label>
+                                beds
+                                <input
+                                type='number'
+                                value={this.state.beds}
+                                onChange={this.update('beds')}
+                                />
+                            </label>
 
-                        <label>
-                            beds
-                            <input
-                            type='number'
-                            value={this.state.beds}
-                            onChange={this.update('beds')}
-                            />
-                        </label>
+                            <label>
+                                baths
+                                <input
+                                type='number'
+                                value={this.state.baths}
+                                onChange={this.update('baths')}
+                                />
+                            </label>
 
-                        <label>
-                            baths
-                            <input
-                            type='number'
-                            value={this.state.baths}
-                            onChange={this.update('baths')}
-                            />
-                        </label>
-
-                        <label>
-                            Square Feet
-                            <input
-                            type='number'
-                            value={this.state.sqft}
-                            onChange={this.update('sqft')}
-                            />
-                        </label>
+                            <label>
+                                Square Feet
+                                <input
+                                type='number'
+                                value={this.state.sqft}
+                                onChange={this.update('sqft')}
+                                />
+                            </label>
+                        </div>
 
                         <label>
                             price
@@ -256,7 +265,7 @@ class ListingForm extends React.Component {
 
                     {(this.props.formType === "Update listing") ? 
                         <div className="delete-div">
-                            <p className='delete-listing' onClick={this.deleteListing} >Remove your listing</p>
+                            <button className='delete-listing' onClick={this.deleteListing} >Remove your listing</button>
                         </div> : 
                         null}
 
