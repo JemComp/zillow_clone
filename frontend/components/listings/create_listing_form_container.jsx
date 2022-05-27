@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ListingForm from './listing_form';
-import { createListing } from '../../actions/listing_actions';
+import { createListing, clearErrors } from '../../actions/listing_actions';
 
 const mapStateToProps = state => ({
   listing: {
@@ -23,7 +23,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  action: listing => dispatch(createListing(listing))
+  action: listing => dispatch(createListing(listing)),
+  clearErrors: () => dispatch(clearErrors())
+
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListingForm));

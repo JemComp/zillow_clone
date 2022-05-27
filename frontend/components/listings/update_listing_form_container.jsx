@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ListingForm from './listing_form';
-import { fetchListing, updateListing} from '../../actions/listing_actions';
+import { fetchListing, updateListing, deleteListing,clearErrors} from '../../actions/listing_actions';
 
 
 class UpdateListingForm extends React.Component {
@@ -11,7 +11,7 @@ class UpdateListingForm extends React.Component {
     }
   
     render() {
-      const { action, formType, listing, errors } = this.props;
+      const { action, formType, listing, errors, deleteListing, history, clearErrors } = this.props;
 
       if (!listing) return null;
       return (
@@ -20,8 +20,9 @@ class UpdateListingForm extends React.Component {
           formType={formType}
           listing={listing} 
           errors={errors}
-          history={this.props.history}
-           />
+          history={history}
+          deleteListing={deleteListing}  
+          clearErrors={clearErrors}  />
       );
     }
   }
@@ -35,7 +36,9 @@ class UpdateListingForm extends React.Component {
   
   const mapDispatchToProps = dispatch => ({
     fetchlisting: listingId => dispatch(fetchListing(listingId)),
-    action: listing => dispatch(updateListing(listing))
+    action: listing => dispatch(updateListing(listing)),
+    deleteListing: listingId => dispatch(deleteListing(listingId)),
+    clearErrors: () => dispatch(clearErrors())
   });
   
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UpdateListingForm));

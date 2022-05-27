@@ -24,7 +24,7 @@ class ListingIndexItem extends React.Component{
                 <span>{this.props.listing.baths} </span>
                 <span>ba   </span>
                 <span>{this.props.listing.sqft.toLocaleString(undefined, { minimumFractionDigits: 0 })} </span>
-                <span>sqft  -  House for sallisting-descriptione</span>
+                <span>sqft  -  House for sale</span>
             </div>
             <p id="index-item-address">{this.props.listing.address}</p>
           </div>

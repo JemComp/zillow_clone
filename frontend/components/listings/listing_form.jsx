@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import MarkerManager from "../../util/marker_manager";
 
 class ListingForm extends React.Component {
@@ -7,10 +8,11 @@ class ListingForm extends React.Component {
         this.state = this.props.listing;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
-
+        this.deleteListing = this.deleteListing.bind(this)
     }
 
     componentDidMount() {
+        this.props.clearErrors()
         const mapOptions = {
 
             center: { lat: this.props.listing.lat, lng: this.props.listing.lng},
@@ -38,6 +40,12 @@ class ListingForm extends React.Component {
             this.setState({ [field]: e.currentTarget.value})    
         }
         
+    }
+
+    deleteListing() {
+        this.props.deleteListing(this.state.id)
+        .then(() => this.props.history.push(`/listings`))
+        // debugger
     }
 
     removePhotos(type, photo) {
@@ -89,14 +97,14 @@ class ListingForm extends React.Component {
         }
         // console.log(formData.get("id"))
         this.props.action(formData)
-        // debugger
-        this.props.history.push(`/listings`)
+        .then(() => this.props.history.push(`/listings`))
+        
     }
 
 
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
         let prev1 = ( this.state.photoUrls != undefined  && this.state.photoUrls.length != 0) ? 
             this.state.photoUrls.map((photoUrl, i) => (
                     <div className="form-photos-div">
@@ -245,6 +253,12 @@ class ListingForm extends React.Component {
                         
                         <br/>
                     </ul>
+
+                    {(this.props.formType === "Update listing") ? 
+                        <div className="delete-div">
+                            <p className='delete-listing' onClick={this.deleteListing} >Remove your listing</p>
+                        </div> : 
+                        null}
 
                 </div>
 

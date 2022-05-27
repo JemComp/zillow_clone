@@ -4,6 +4,7 @@ export const RECEIVE_ALL_LISTINGS = "RECEIVE_ALL_LISTINGS"
 export const RECEIVE_LISTING = "RECEIVE_LISTING"
 export const REMOVE_LISTING = "REMOVING_LISTING"
 export const RECEIVE_LISTING_ERRORS = "RECEIVE_LISTING_ERRORS"
+export const CLEAR_LISTING_ERRORS = "CLEAR_LISTING_ERRORS"
 
 
 const receiveErrors = (errors) => {
@@ -12,6 +13,12 @@ const receiveErrors = (errors) => {
       errors
   }
 }
+
+export const clearErrors = () => ({
+  type: CLEAR_LISTING_ERRORS
+})
+
+
 const receiveAllListings = listings => ({
     type: RECEIVE_ALL_LISTINGS,
     listings
@@ -22,10 +29,14 @@ const receiveAllListings = listings => ({
     listing
   });
   
-  const removeListing = listingId => ({
-    type: REMOVE_LISTING,
-    listingId
-  });
+  const removeListing = listingId => {
+    // console.log(listingId)
+    // debugger
+    return {
+      type: REMOVE_LISTING,
+      listingId
+    }
+  };
 
   export const fetchAllListings = () => dispatch => (
     ListingAPIUtil.fetchListings()
@@ -50,8 +61,8 @@ export const updateListing = (listing) => dispatch => {
         .fail(error => dispatch(receiveErrors(error)))
 }
 
-export const deleteListing = (listingId) => dispatch => {
-    return ListingAPIUtil.deleteListing(listingId)
-        .then(listingId => dispatch(removeListing(listingId)))
+export const deleteListing = listingId => dispatch => {
+  // debugger
+  return ListingAPIUtil.deleteListing(listingId)
+      .then(listing => dispatch(removeListing(listing.id)))
 }
-

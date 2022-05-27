@@ -28,7 +28,10 @@ export const updateListing = FormData => $.ajax({
     contentType: false,
 });
 
-export const deleteListing = listingId => $.ajax({
-    url: `/api/reports/${listingId}`,
-    method: 'DELETE'
-});
+export const deleteListing = listingId => {
+    // debugger
+    return $.ajax({
+        url: `/api/listings/${listingId}`,
+        method: 'DELETE'
+    });
+}

@@ -34,7 +34,7 @@ class Api::ListingsController < ApplicationController
         @listing=Listing.find_by(id: params[:id])
         @listing.destroy
         
-        render :index
+        render :show
     end
 
     private
