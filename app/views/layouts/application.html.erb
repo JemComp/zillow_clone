@@ -9,9 +9,10 @@
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
     <%= javascript_include_tag 'application' %>
     <script>
-      window.heroBanner = "<%= image_url('hero_banner')%>"
+      window.heroBanner = "<%= image_url('hero_banner2')%>"
       window.houseIcon = "<%= image_url('house_icon')%>"
       window.userIcon = "<%= image_url('user_icon')%>"
+      window.spillow = "<%= image_url('spillow')%>"
 
     </script>
   </head>

@@ -12,7 +12,7 @@ class NavHeader extends React.Component {
         return (
             <div className="nav-header">
                 <NavLeft currentUser={this.props.currentUser} openModal={this.props.openModal}/>
-                <Link to="/"><img src = { window.houseIcon }/></Link>
+                <Link to="/"><img src = { window.spillow }/></Link>
                 <SignIn logout={this.props.logout} currentUser={this.props.currentUser} openModal={this.props.openModal}/>
             </div>
         )

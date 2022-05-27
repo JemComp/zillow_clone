@@ -11,7 +11,7 @@ class ListingMap extends React.Component {
       // set the map to show SF
       const mapOptions = {
         center: { lat: 37.66385274501688, lng: -122.4351120016871}, // this is SF
-        zoom: 13
+        zoom: 8
       };
   
       // wrap this.mapNode in a Google Map

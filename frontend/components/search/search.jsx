@@ -14,7 +14,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="main-index-container">
                 <div>
                     {/* SEARCH STUFF WILL GO HERE */}
                 </div>

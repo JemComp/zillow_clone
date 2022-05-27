@@ -54,3 +54,4 @@ export const deleteListing = (listingId) => dispatch => {
     return ListingAPIUtil.deleteListing(listingId)
         .then(listingId => dispatch(removeListing(listingId)))
 }
+

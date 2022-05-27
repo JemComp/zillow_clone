@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MarkerManager from '../../util/marker_manager'
+import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
+import { IconContext } from "react-icons";
+
 
 class ListingShow extends React.Component {
     constructor(props) {
@@ -31,13 +34,19 @@ class ListingShow extends React.Component {
         if (this.props.currentUser && saveId === -1) {
             return (
                 <div className="save-container">
-                    <button onClick={() => this.props.createSave({user_id: this.props.currentUser.id, listing_id: this.props.listing.id})}> save </button>
+                    <IconContext.Provider value={{ color: "rgb(55, 116, 230)", className: "heart", size: "30"}}>
+                        <AiOutlineHeart onClick={() => this.props.createSave({user_id: this.props.currentUser.id, listing_id: this.props.listing.id})}/> 
+                    </IconContext.Provider>
+                    <span>save</span>
                 </div>
             )
         } else if (this.props.currentUser && saveId != -1) {
             return (
                 <div className="save-container">
-                    <button onClick={() => this.props.deleteSave(saveId)}> unsave </button>
+                    <IconContext.Provider value={{ color: "rgb(55, 116, 230)", className: "heart", size: "30"}}>
+                        <AiFillHeart onClick={() => this.props.deleteSave(saveId)}/>
+                    </IconContext.Provider>
+                    <span>saved</span>
                 </div>
             )
         } else {
@@ -73,24 +82,28 @@ class ListingShow extends React.Component {
 
                 <div className="listing-div-right">
                     <nav className="listing-nav-header">
+                        <img src = { window.spillow }/>
                         {this.isSaved()}
                     </nav>
                     <div className="listing-physical-div">
+
                         <div className="listing-price-div">
                             <span className="listing-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span>
                         </div>
+
                         <span className="listing-physical-info">{beds} </span>
                         <span className="listing-info">bd | </span>
                         <span className="listing-physical-info">{baths} </span>
                         <span className="listing-info">ba | </span>
                         <span className="listing-physical-info">{sqft.toLocaleString(undefined, { minimumFractionDigits: 0 })} </span>
                         <span className="listing-info">sqft</span>
-                    </div>
-                    <div className="listing-address-div">
-                        <span className="listing-address">{address}, </span>
-                        <span className="listing-address">{city}, </span>
-                        <span className="listing-address">{state} </span>
-                        <span className="listing-address">{zip_code}</span>
+
+                        <div className="listing-address-div">
+                            <span className="listing-address">{address}, </span>
+                            <span className="listing-address">{city}, </span>
+                            <span className="listing-address">{state} </span>
+                            <span className="listing-address">{zip_code}</span>
+                        </div>
                     </div>
 
                     
@@ -99,9 +112,9 @@ class ListingShow extends React.Component {
                         </div>
                     </div>
 
-                    <div className="listing-address-div">
+                    <div className="listing-description-div">
                         <h3>Overview</h3>
-                        <span className="listing-address">{description}</span>
+                        <span className="listing-description">{description}</span>
                     </div>
 
                     <div>

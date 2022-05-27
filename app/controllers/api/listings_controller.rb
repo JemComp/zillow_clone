@@ -32,7 +32,7 @@ class Api::ListingsController < ApplicationController
 
     def destroy
         @listing=Listing.find_by(id: params[:id])
-        @article.destroy
+        @listing.destroy
         
         render :index
     end
