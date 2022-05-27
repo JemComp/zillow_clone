@@ -7,11 +7,34 @@
 }
 
 #session-welcome {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 35px;
     text-align: center;
     font-weight: bold;
     /* padding: 20px; */
     padding-bottom: 40px;
+}
+
+.session-form-switch {
+  font-family: 'Times New Roman', Times, serif;
+  height: 40px;
+  width: 90%;
+  span {
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .signup-switch {
+    border-bottom: 5px solid blue;
+  }
+  .signup-switch-other {
+    cursor: pointer;
+  }
+
+  .signup-switch-other:hover {
+    color:rgb(26, 83, 189)
+  }
+  border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 
@@ -85,6 +108,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
+    border-radius: 5px;
   }
 
  .listing-modal-background {

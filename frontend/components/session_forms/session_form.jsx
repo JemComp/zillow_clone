@@ -2,6 +2,7 @@
   
 import React from "react";
 import { Link } from "react-router-dom";
+import { signup } from "../../actions/session_actions";
 import { login } from "../../util/session_api_util";
 //refactor to pass in open/close modal
 
@@ -47,19 +48,38 @@ class SessionForm extends React.Component {
         }
     }
 
+    signupSwitch() {
+        let signupSwitch;
+
+        if (this.props.formType === 'login') {
+            signupSwitch = (
+                <div className="session-form-switch">
+                    <span className="signup-switch">Sign in</span>
+                    {this.props.otherForm}
+                </div>
+            )
+        } else {
+            console.log("signup")
+            signupSwitch = (
+            <div className="session-form-switch">
+                {this.props.otherForm}
+                <span className="signup-switch">New account</span>
+            </div>
+            )  
+        }
+
+        return signupSwitch;
+    }
+
     
     render() {
-        // if(this.props.currentUser) {
-        //     this.props.history.push('/');
-        //     return;
-        // }
+
         return (
             <div className="session-form-container">
                 <h1 id="session-welcome">Welcome to Spillow</h1>
-                <h2>{this.props.formType === "login" ? "Log in" : "Sign up"}</h2>
-
-
-
+                {/* <h2>{this.props.formType === "login" ? "Log in" : "Sign up"}</h2> */}
+                {this.signupSwitch()}
+            
                 <form onSubmit={this.handleSubmit} className="session-form">
 
                     <div id="session-input">
@@ -90,8 +110,6 @@ class SessionForm extends React.Component {
                 <button onClick={this.demoLogin} id="switch-login">
                 {"Log in demo user"}
                 </button>
-
-                {this.props.otherForm}
             </div>
         );  
     }
