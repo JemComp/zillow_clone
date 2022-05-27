@@ -66,14 +66,42 @@ class MarkerManager {
 
     }
 
-    createMarkerFromCoords(lat, lng) {
-        return new google.maps.Marker({
-            position: google.maps.LatLng(lat, lng)
-            
-        })
-    }
+   createMarkerFromForm(lat, lng) {
+        
+        if (this.markers[0]) {
+            this.markers[0].setMap(null);
+            delete this.markers[0];
+        }
+        const position = new google.maps.LatLng(lat, lng);
+        const mouseOver = () => {
+            marker.setIcon(this.icon2);
+        };
+        const mouseOut = () => {
+            marker.setIcon(this.icon);
+        };
+        
+        this.icon = {
+            url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        };
+        this.icon2 = {
+            url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        };
+        
+        const marker = new google.maps.Marker({
+            position,
+            map: this.map,
+            icon: this.icon
+        });
+        marker.addListener("mouseover", mouseOver);
+        marker.addListener("mouseout", mouseOut);
+        console.log(marker)
+        this.markers[0] = marker;
+    };
 
-    
+    removeMarker(marker) {
+        this.markers[marker.listingId].setMap(null);
+        delete this.markers[marker.listingId];
+    }
 
 }
 

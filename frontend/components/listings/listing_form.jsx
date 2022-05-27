@@ -21,8 +21,15 @@ class ListingForm extends React.Component {
       
           // wrap this.mapNode in a Google Map
           this.map = new google.maps.Map(this.mapNode, mapOptions);
-          this.MarkerManager = new MarkerManager(this.map, undefined, true)
-          this.MarkerManager.updateMarkers([this.props.listing])
+        this.MarkerManager = new MarkerManager(this.map, undefined);
+        this.MarkerManager.createMarkerFromForm(this.state.lat, this.state.lng);
+
+        
+        this.map.addListener("click", (e) => {
+            this.setState({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+            this.MarkerManager.createMarkerFromForm(this.state.lat, this.state.lng);
+        });
+    
         this.setState( { photoFiles: [] } )
         // console.log(this.state)
 
