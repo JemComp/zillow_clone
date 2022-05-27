@@ -16,16 +16,19 @@ class SignIn extends React.Component {
 
     loggedIn()  {
         return (
-            <div>
-                <p>Hello { this.props.currentUser.email }</p>
-                <p onClick={this.handleLogout}>Logout</p>
+            <div className="signin-div">
+                <p>{ this.props.currentUser.email }</p>
+                <div className="logged-in-menu">
+                    <Link to="listings/saves">saved listings</Link>
+                    <p onClick={this.handleLogout}>Logout</p>
+                </div>
             </div>
     )}
 
     loggedOut() {
         console.log(this.props)
         return (
-            <div>
+            <div className="signin-div">
                 <p onClick={() => this.props.openModal('login')}>
                 Sign In
                 </p>
