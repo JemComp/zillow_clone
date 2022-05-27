@@ -94,7 +94,6 @@ class MarkerManager {
         });
         marker.addListener("mouseover", mouseOver);
         marker.addListener("mouseout", mouseOut);
-        console.log(marker)
         this.markers[0] = marker;
     };
 

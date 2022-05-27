@@ -15,7 +15,6 @@ class SessionForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this)
-        console.log(props)
     }
 
     componentDidMount() {
@@ -59,7 +58,6 @@ class SessionForm extends React.Component {
                 </div>
             )
         } else {
-            console.log("signup")
             signupSwitch = (
             <div className="session-form-switch">
                 {this.props.otherForm}

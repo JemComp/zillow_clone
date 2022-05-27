@@ -31,14 +31,11 @@ class ListingForm extends React.Component {
         });
     
         this.setState( { photoFiles: [] } )
-        // console.log(this.state)
 
     }
 
     handleFile(e) {
-        console.log(e.target.files)
         this.setState({ photoFiles: [...this.state.photoFiles, e.target.files[0]] })
-        // console.log(this.state)
     }
 
 
@@ -57,8 +54,6 @@ class ListingForm extends React.Component {
 
     removePhotos(type, photo) {
         return () => {
-            console.log("removing")
-
             if (type === 'url') {
                 const idx = this.state.photoUrls.indexOf(photo)
                 this.setState({ photoUrls: [...this.state.photoUrls.splice(idx,1)]})
@@ -73,7 +68,6 @@ class ListingForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state)
         const formData = new FormData();
         formData.append('id', this.state.id)
         formData.append('listing[address]', this.state.address);
@@ -89,7 +83,6 @@ class ListingForm extends React.Component {
         formData.append('listing[description]', this.state.description);
         formData.set
         if (this.state.photoFiles) {
-            console.log("photos in state")
             for (let i = 0; i < this.state.photoFiles.length; i++) {
                 formData.append("listing[photos][]", this.state.photoFiles[i]);
             }
@@ -97,12 +90,10 @@ class ListingForm extends React.Component {
 
 
         if (this.state.photoFiles) {
-            console.log("photos in state")
             for (let i = 0; i < this.state.photoFiles.length; i++) {
                 formData.append("listing[photos][]", this.state.photoFiles[i]);
             }
         }
-        // console.log(formData.get("id"))
         this.props.action(formData)
         .then(() => this.props.history.push(`/listings`))
         
@@ -111,7 +102,6 @@ class ListingForm extends React.Component {
 
 
     render() {
-        console.log(this.props)
         let prev1 = ( this.state.photoUrls != undefined  && this.state.photoUrls.length != 0) ? 
             this.state.photoUrls.map((photoUrl, i) => (
                     <div className="form-photos-div">

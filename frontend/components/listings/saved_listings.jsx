@@ -5,7 +5,6 @@ import ListingIndexItem from "./listing_index_item";
 class SavedListings extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props)
     }
 
     componentDidMount() {

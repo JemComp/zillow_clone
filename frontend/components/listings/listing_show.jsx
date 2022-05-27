@@ -11,7 +11,6 @@ class ListingShow extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props)
         const mapOptions = {
             center: { lat: this.props.listing.lat, lng: this.props.listing.lng},
             zoom: 16
@@ -29,7 +28,6 @@ class ListingShow extends React.Component {
 
 
         saveId = saveId ? saveId : -1
-        console.log("isSaved", this.props, saveId)
 
         if (this.props.currentUser && saveId === -1) {
             return (
@@ -66,9 +64,6 @@ class ListingShow extends React.Component {
 
         if (!this.props.listing) return null;
         const { address, city, state, zip_code, sqft, beds, baths, price, photoUrls, description, user_id  } = this.props.listing
-        console.log("render-props", this.props)
-        // console.log("saves", this.props.saves)
-        // console.log(this.isSaved())
         
 
         return(
@@ -121,7 +116,7 @@ class ListingShow extends React.Component {
                         {(this.props.currentUser && this.props.currentUser.id === user_id) ? 
                         <div className="show-edit-link-container">
                             <Link className='show-edit-link' onClick={this.props.closeModal} to={`/listings/${this.props.listing.id}/edit`}>Edit your listing</Link>
-                        </div> : 
+                        </div> :    
                         null}
                     </div>
 

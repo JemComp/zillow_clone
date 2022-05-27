@@ -26,7 +26,6 @@ class SignIn extends React.Component {
     )}
 
     loggedOut() {
-        console.log(this.props)
         return (
             <div className="signin-div">
                 <p onClick={() => this.props.openModal('login')}>

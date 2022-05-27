@@ -30,8 +30,6 @@ const receiveAllListings = listings => ({
   });
   
   const removeListing = listingId => {
-    // console.log(listingId)
-    // debugger
     return {
       type: REMOVE_LISTING,
       listingId
